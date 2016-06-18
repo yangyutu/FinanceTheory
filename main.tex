@@ -1,0 +1,1346 @@
+\documentclass[a4paper,13pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,inner=1.5cm,outer=3cm,top=2cm,bottom=3cm,bindingoffset=1cm]{geometry}
+%\usepackage[onehalfspacing]{setspace}
+\title{Finance Theory}
+\author{Yugugang Yang yangyutu123@gmail.com }
+\date{March 2015}
+
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{yfonts}
+\usepackage{biblatex}
+\usepackage{hyperref}
+\addbibresource{references.bib}
+\setcounter{secnumdepth}{4}
+\usepackage{marginnote}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{corollary}{Corollary}[theorem]
+%\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Pa}{\partial}
+\usepackage{commath}
+\usepackage{bm}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{definition}{Definition}
+%\newtheorem*{remark}{Remark}
+%\theoremstyle{remark}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\part{Fundamentals}
+\chapter{Fundamentals}
+\section{Purposes of financial markets}
+Finanical markets enable efficient allocation of resources 
+\begin{itemize}
+    \item across time (borrow tomorrow for today)
+    \item across states of nature (to against uncertainty)
+\end{itemize}
+
+\section{Roles of the market}
+The finanical markets have the following roles:
+\begin{itemize}
+    \item Gather information
+    \item Aggregate liquidity,i.e., aggregate buyers and sellers together to enable trades
+    \item Promote efficiency and fairness
+\end{itemize}
+
+\section{Financial economics vs. Financial engineering }
+Financial economics: use equilibrium arguments to 
+\begin{itemize}
+    \item Price equities, bonds, and other assets.
+    \item Set interest rate
+\end{itemize}
+
+Financial engineering: assume prices of equities and interest rates given to price derivatives on equities, bonds, interest rates using the no-arbitrage condition.
+
+\section{Central problems of financial engineering}
+\subsection{Security pricing}
+\begin{itemize}
+    \item Primary securities: stocks, bonds
+    \item Derivative securities: forwards, swaps, futures, options on the underlying securities
+\end{itemize}
+\subsection{Portfolio selection}
+Choose a trading strategy to maximize the utility of consumption and final wealth
+
+\subsection{Risk management}
+Understand the risk inherent in a portfolio
+\begin{itemize}
+    \item Tail risk: probability of large loss
+    \item Value-at-risk and conditional value-at-risk
+\end{itemize}
+
+
+\section{Interest rate}
+\subsection{Term structure of interest rate}
+Interest rate depends on the term or duration of loan, because
+\begin{itemize}
+    \item Investors prefer their funds to be liquid rather than tied up. Investors have to be offered a higher rate to lock in funds for a longer period.
+    \item other explanation: expectation of future rates, market segmentation.
+\end{itemize}
+
+
+\section{Derivatives}
+\subsection{Exchange-traded market}
+A derivative exchange is market where individuals trade standardized contracts that have been defined by the exchange, for example, the Chicago Board of Trade. 
+
+\subsection{Forward contracts}
+It is an agreement to buy or sell an asset at a certain future time for a certain price. Forward contracts on foreign exchange are very popular. 
+
+\subsection{Types of traders}
+\subsubsection{Hedger}
+\subsubsection{Speculators}
+\subsubsection{Arbitrageurs}
+
+\subsection{Liquidity risk\cite{cvitanic2004introduction}}
+
+
+\subsection{Frictionless market}
+By frictionless market, we mean: all investors are price-takers, all parties have the same access to the relevant information, there are no transaction costs or commissions and all assets are assumed to be perfectly divisible and liquid. There is no restriction on the size of a bank credit, and the lending and borrowing rates are equal.\cite{musiela2006martingale}
+
+
+
+\subsection{Equity premium}
+The risky stock return minus the risk-free bond return.
+
+\subsection{Payoff}
+Payoff is the how much the equities worth the next period. For example, today we buy a stock at price $P_t$, the payoff tomorrow is $X_{t+1}=P_{t+1}+D_{t+1}$, where $D$ is the dividend. Payoff is random variable.  
+
+\subsection{Absolute asset pricing vs. relative asset pricing \cite{cochrane2009asset}}
+For relative asset pricing, we derived asset prices based on information available on other, pre-existing assets. \\
+In absolute asset pricing, we price each asset by reference to its exposure to fundamental sources of macroeconomic risk.
+
+
+
+\section{Ito's Lemma}
+Given 
+$$dX_t = \mu dt + \sigma dZ_t$$ and $y_t = f(X_t)$, then
+$$dy_t = f_X dX_t + \frac{1}{2}f_{XX} (dX_t)^2 = f_X + \frac{1}{2}f_{XX}$$
+where $dZ(t)\sim N(0,dt), E(dZ(t)dZ(\tau)) = dt\delta(t-\tau) $
+\subsection{Product rule and quotient rule}
+Given $X_t,Y_t, Z_t = X_t Y_t$,  
+
+\subsection{How to transform from discrete SDE to continous SDE}
+
+\subsection{Wiener process Brownian motion}
+A stochstic process $\beta(t)$ is a called a Wiener process or a Brownian motion if:
+\begin{itemize}
+    \item $\beta(0) = 0$
+    \item each sample path is continous
+    \item $\beta(t)\sim N(0,t)$
+    \item for all $0<t_1<t_2<...<$ the random variables:
+    $$\beta(t_1),\beta(t_2)-\beta(t_1),...$$ are independent and have $\beta(t_2)-\beta(t_1) \sim N(0,t_2-t_1)$
+\end{itemize}
+
+\section{Geometric Brownian motion}
+A stochastic process $S_t$ is said to follow a geometric Brownian motion if it satisfies the following SDE
+$$dS_t = \mu S_t dt + \sigma S_t dW_t$$
+where $W_t$ is a Wiener process.\cite{wiki:Geom} Such process is widely used to model the asset price. If the asset pays a dividends continuously at rate $q$, the SDE becomes:
+$$dS_t = (\mu - q) S_t dt + \sigma S_t dW_t$$
+To solve the SDE, we introduce a new random variable $Z=f(\ln S_t)$. From Ito's lemma, we have
+$$dZ_t = dS_t/S_t - \frac{1}{2S_t^2}dS_tdS_t$$where we also we have $dS_tdS_t = \sigma^2S_t^2dt$
+Then we have
+$$dZ_t = (\mu - \sigma^2/2)dt + \sigma dW_t$$
+Integrate both sides, we have $$\ln\frac{S_t}{S_0}=(\mu - \sigma^2/2)t + \sigma W_t$$
+
+\subsection{Solving SDE}
+
+\section{Square root process}
+$$dS_t = \mu S_t dt + \sigma \sqrt{S_t}dW_t$$
+where $W_t$ is the Wiener process. \cite{neftci2000introduction}\cite{wiki:CIR}
+\section{Mean reverting process}
+$$dS_t = \lambda(\mu - S_t)dt + \sigma S_t dW_t$$
+where $W_t$ is the Wiener process. \cite{neftci2000introduction}
+\section{Ornstein–Uhlenbeck process}
+A special case of the mean reverting process is Ornstein-Uhlenbeck process, given as
+$$dS_t = -\mu S_t dt +\sigma dW_t,\mu>0$$
+where $W_t$ is the Wiener process.
+\section{The Girsanov Theorem}
+
+
+
+
+\section{Complete market}
+A complete market  is a market with two conditions:
+\begin{itemize}
+    \item Negligible transaction costs and therefore also perfect information
+    \item there is a price for every asset in every possible state of the world
+\end{itemize}
+In such a market, the complete set of possible bets on future states of the world can be constructed with existing assets without friction.A complete market can be generalized as the ability to replicate cash flows of all simple contingent claims.\cite{wiki:completemarket}
+
+Understand this using linear algebra is: suppose that there are $K$ assets and $S$ states of nature. The assets' payoff is represented by the matrix $$D\in \R^{S\times K}$$. The market is complete if $R$ has full row rank, such that for any $x \in \R^S$, there exist a $z$ such that $x=Rz$. In particular, if there are more states than assets, market cannot be complete.
+
+\subsection{State claim (state-contingent-claim)}
+A contract that pays off different amount under different states of the world.
+
+
+\subsection{Payoff vector}
+A vector whose elements represent the amount of payoff in each outcome.
+
+\subsection{Arrow-Debreu security (pure security)}
+A contract that pays off one unit (usually one dollar) in a particular outcome and nothing in all other outcomes.
+
+\subsection{Incomplete market}
+incomplete markets are markets in which the number of Arrow–Debreu securities is less than the number of states of nature.
+
+
+
+
+
+
+\subsection{Optimal stopping problem}
+
+\subsection{Martingale}
+A martingale $\{Z_n:n>=1\}$ is a stochastic process with the properties that $E[Z_n]<\infty$, and for all $n$, $E[Z_{n+1}|Z_n=z_n,Z_{n-1}=z_{n-1},...,Z_1=z_1] = Z_n$.\cite{zhou2008practical}
+
+\chapter{Basic Microeconomics \& Macroeconomics}
+
+\section{Ten Principles of Economics}
+\begin{enumerate}
+    \item People face trade-offs
+    \item The cost of something is what you give up to get it
+    \item Rational people think at the margin
+    \item People respond to incentives
+    \item Trade can make everyone better off (Because it allows people to specialize in those activities in which they have a comparative advantage)
+    \item Markets are usually good way to organize economic activities
+    \item Governments can sometimes improve market outcomes
+    \item A country's standard of living depends on its ability to produce goods and services
+    \item Prices rise when government prints too much money
+    \item Society faces a short-run trade-off between inflation and unempolyment
+\end{enumerate}
+
+\section{Basics}
+\subsection{Market failure}
+Market failure refers to a situation in which the market on its own fails to produce an efficient allocation of the resources. Market fails usually at two causes: 
+\begin{enumerate}
+    \item externality, the impact of one person's actions on the well-being of a bystander
+    \item market power, the ability of a single person or small group to unduly influence the market prices. 
+\end{enumerate}
+
+\subsection{Production possibilities frontier}
+The combinations of output products(such as car, food) that the economy can possibly produce given the available factors of production and the available production technology.
+
+\subsection{Absolute advantage vs. comparative advantage}
+There are two ways to compare the ability of two people in producing a good. The person who can produce the good with the smaller quantity of inputs is said to have an absolute advantage in producing the good. The person who has the smaller opportunity cost of producing the good to said to have a comparative advantage. The gains from the trade are based on comparative advantage, not absolute advantage.
+
+\subsection{Market}
+A market is a group of buyers and sellers of a particular good or service. A \textbf{competitive market} market is a market in which there are so many buyer and so many sellers that each has a negligible impact on the market price(because other seller are offering similar products). A \textbf{perfectly competitive} market must have two characteristics:
+\begin{enumerate}
+    \item the goods offered for sale are all exactly the same
+    \item the buyers and the sellers are so numerous that no single buyer or seller has any influence over the market price.
+\end{enumerate}
+
+\subsection{Demand curve and supply curve}
+\begin{itemize}
+    \item The demand curve of a good shows how the quantity demanded depends on its price. The demand curve will shift when there are changes of  income of buyers, prices of substitutes and complements, tastes, expectations, and the number of buyers.
+    \item The supply curve of a good shows how the quantity supplied depends on its price. The supply curve will shift when there are changes of technology, expectation, and the number of sellers. 
+    \item The intersection of the demand and supply curves determines the market equilibrium. At the equilibrium price, the supply quantity equals the demand quantity. The behavior of the buyers and sellers drives the markets towards its equilibrium. When price is higher than equilibrium, there will be surplus and cause the market price to fall. 
+    \item The price elasticity of is the percentage change in the quantity over the percentage change in the price demand/supply curve. A elasticity greater than 1 is said elastic, and the greater the elasticity, the larger the response of the demand to the price. A vertical line is perfectly inelastic (The demand/supply is fixed no matter the price is).  Demand tends to be more elastic if close substitutes are available, if the good is a luxury rather than a necessity, if the market is narrowly defined, or if buyers have substantial time to react to a price change. The supply elasticity depends on the time horizon under consideration. In most markets, supply is more elastic in the long run than the the short run.
+    \item The income elasticity of demand measures how much quantity demanded responds to changes in the consumers' income.
+\end{itemize}
+
+
+
+\subsubsection{Price ceiling and price floor}
+\begin{itemize}
+    \item A price ceiling is a legal maximum on the price of a good or service, which will create a shortage of supply if it is below the equilibrium price.
+    \item  A price floor is a legal minimum on the price of a good or service, which will create supply excess if it is above the equilibrium price. 
+\end{itemize}
+
+\subsection{Consumer surplus and producer surplus}
+Consumer surplus equals the buyer's willingness to pay for a good minus the amount they actually pay, and it measures the benefit buyers get from the participating in a market. \\
+Producer surplus equals the amount sellers receive for their goods minus their costs of production, and it measures the benefit sellers get from participating in a market. \\
+The equilibrium of supply and demand maximize the sum of consumer and producer surplus. 
+
+\subsection{International trade}
+A low domestic price indicates that the country has a comparative advantage in producing the good and that country will become an exporter. \\
+A high domestic price indicates that the rest of the world has a comparative advantage in producing the good and that country will become an importer. \\
+When a country allows trade and becomes an exporter of a good, producers of the good are better off, and consumers of the good worse off. When a country allows trade and becomes an importer of a good, consumers are better off, and producers are worse off. In both cases, the gain from trade exceed the losses. 
+
+
+\subsection{Cost of production}
+The opportunities costs of production be categorized:
+\begin{itemize}
+    \item Explicit cost, such as wages
+    \item Implicit cost, such as the wages the firm owner gives up by working in the firm rather than taking another job
+    \item Fixed cost that does not vary with the quantity of the output produced
+    \item Variable cost that vary with the quantity of the output
+    \item Total cost, 
+\end{itemize}
+
+The total cost in the production process includes:
+\begin{itemize}
+\item Fixed cost that does not vary with the quantity of the output produced
+\item Variable cost that vary with the quantity of the output
+\end{itemize}
+
+\subsection{Externality}
+\begin{itemize}
+    \item When a transaction between a buyer and a seller directly affects a third party, the effect is called an externality. Externality is the uncompensated impact of one person's action the well-being of a bystander. If it is beneficial, it is positive externality, e.g., restoring historic building. If it is negative impact, then it is negative externality, e.g., environment pollution. 
+\end{itemize}
+
+
+
+\subsubsection{Marginal cost and average total cost}
+\textbf{Marginal cost} is the increase in total cost(includes fixed cost and variable cost) that arises from an extra unit of production.
+
+
+\subsection{Firm's decision in competitive market}
+\textbf{Marginal revenue} is the change in total revenue from an additional unit sold. For competitive firms, the total revenue is $P\times Q$; then the marginal revenue equals the price of the good.\\
+The company will decide to supply the quantity such that its marginal cost equals its marginal revenue. 
+The firm will shut down in the short run if the marginal revenue that it would get from producing is less than its average variable cost of production. 
+The firm will exit the market in the long run if the marginal revenue is less than its average total cost(which is usually greater than average variable cost.).
+
+\subsubsection{Firm's demand curve vs market demand curve}
+market demand curve is usually downward sloping; on the other hand, the firm's demand curve is horizonal,i.e., the price will not change with the demand. This says that the firm is a price taker in a perfectly competitive market. 
+
+
+\subsubsection{Long term profit}
+In a market with free entry and exit, profits are driven to zero in the long run. In this long-run equilibrium, all firms produce at the efficient scale, price equals the minimum of average total cost. Note that the cost is economic cost(considering opportunity cost) not accountant's cost.
+
+
+\subsection{Monopoly}
+\begin{itemize}
+    \item A monopoly is a firm that is the sole seller in its market. A monopoly arises when a single firm owns a key resource, when the government gives a firm the exclusive right to produce a good, or when a single firm have downward sloping average total cost as a function of quantity.
+    \item Because a monopoly is the sole producer in its market, it faces a downward-sloping demand curve.
+    \item A monopoly firm maximize profit by producing the quantity at which the marginal revenue equals the marginal cost. The monopoly then chooses the price at which that quantity is demanded; the price will exceeds its marginal revenue and cost.
+\end{itemize} 
+
+\subsection{Oligopoly}
+\begin{itemize}
+    \item oligopoly is a market structure in which only a few sellers offer similar or identical products
+    \item oligopolists can maximize their total profits by forming a cartel and acting like monopolist; however, the prisoners' dilemma shows that self-interest can prevent people from maintaining cooperation. 
+    \item Policymaker use the antitrust laws to prevent oligopolies from engaging in behavior that reduces competition.
+    \item The firms in an oligopoly will reach Nash equilibrium in their production quantity. The quantity greater than the level produced by monopoly and less than the level of a competitive firms. The price is also lying between
+    \item When more and more firms join in an oligopoly, the market becomes more and more like competitive markets. 
+\end{itemize}
+
+\subsection{Monopolistic competition}
+A market structure in which many firms sell products that are similar but not identical.
+
+\subsection{Theory of consumer choice}
+\begin{itemize}
+    \item budge constraint: the limit on the consumption bundles that a consumer can afford. 
+    \item indifference curve: a curve showing consumption bundles that give the consumer the same level of satisfaction. There are multiple indifference curve, each is a level set of satisfaction function using quantity of goods and services.
+    \item the consumer optimizes under budge constraint. 
+\end{itemize}
+
+\subsection{Market for factors of production}
+\textbf{Factors of production} includes labor, land and capital.
+\begin{itemize}
+    \item The economy's income is distributed in the markets for the factors of production.
+    \item Competitive, profit-maximizing firms hire each factor up to the point at which the value of the marginal product of the factor equals its price. 
+\end{itemize}
+
+\subsection{Wages}
+\begin{itemize}
+    \item Workers earn different wages. Wage differentials compensate workers for job attributes(unpleasant jobs pays more).
+    \item Competitive markets tend to limit the impact of discrimination on wages, because non-discriminatory firms will be more profitable than discriminatory firms (because non-discriminatory firms only select worker based on the profit they can get.)
+\end{itemize}
+
+
+\subsection{Big four issues in Macro-economics}
+\begin{enumerate}
+    \item inflation
+    \item unemployment
+    \item the rate of economic growth
+    \item forecasting movements in the business cycle
+\end{enumerate}
+
+\subsubsection{Inflation}
+Inflation is defined the upward movement of prices from one year to the next. It can be measured by the the percentage change in the price indices:
+\begin{itemize}
+    \item Consumer Price Index(CPI) (i.e. calculated by pricing a basket of goods and services purchased by a typical household)
+    \item Producer Price Index(PPI) (i.e. based on a number of important raw materials)
+    \item GDP deflator
+\end{itemize}
+
+\subsubsection{Unemployment rate}
+The unemployment rate is defined as the number of unemployed persons divided by the number of the people in the labor force.\\
+There are three kinds of unemployment
+\begin{itemize}
+    \item frictional (a natural part of the job-seeking process; least worrying issue)
+    \item cyclical (occurs when the economy dips into a recession; a serious problem)
+    \item structural (a change in technology make someone's job obsolete; a major issue hard to cure)
+\end{itemize}
+
+\subsubsection{Economic growth rate}
+Economic grwoth rate measured by the Gross Domestic Product, defined as the market value of the all final goods and services produced in a country in a given year. \\
+
+
+Measuring GDP using the flow expenditure approach
+GDP = consumptions by households + investment expenditures by businesses + government purchases + net exports\\
+
+\begin{itemize}
+    \item consumption: spending by households on goods and services, with the exception of purchases of new housing
+    \item investment: spending on capital equipment, inventories, and structures, including household purchases of new housing.
+    \item government purchases: spending on goods and services by local, state, and federal governments.
+    \item net exports: spending on domestically produced goods by foreigners(exports)minus spending on foreign goods by domestic residents(imports)
+\end{itemize}
+
+
+Measuring GDP using the flow of income approach
+GDP = wages for workers PLUS rents for property owners PLUS interest for lenders PLUS profits for firms
+
+
+\paragraph{Actual vs. potential GDP}
+\begin{itemize}
+\item Actual GDP: what we produce. 
+\item Potential GDP: maximum economy can produce without causing inflation.
+\item When the actual GDP is less than the potential GDP, we are in the recessionary range of the economy.
+\item When  the actual GDP is above potential GDP, we run the risk of inflation.
+\item When the actual GDP is less than the potential GDP, usually there is the higher unemployment rate.
+\end{itemize}
+
+\paragraph{Nominal vs. real GDP}
+\begin{itemize}
+    \item Nominal GDP: measured in market prices
+    \item Real GDP: nominal GDP adjusted for inflation
+    \item GDP deflator: nominal GDP/Real GDP
+\end{itemize}
+
+
+
+\subsubsection{Business cycle and economic growth}
+Business cycle refers to the recurrent ups and downs in real GDP over several years. \\
+Business executives want to know if the economy is going to expand or go into recession.
+
+\subsection{Major Macro-economic policy tools}
+\begin{enumerate}
+\item Fiscal policy
+    \begin{itemize}
+    \item To stimulate the economy
+    \begin{itemize}
+        \item increase government spending
+        \item cut tax (tax cuts)
+    \end{itemize}
+    \item To contract the economy to fight inflation
+    \begin{itemize}
+        \item decrease government spending
+        \item increase tax (tax hikes)
+    \end{itemize}
+        
+    \end{itemize}
+\item Monetary policy
+    \begin{itemize}
+        \item Increase the money supply to stimulate the economy to fight recession
+        \item Decrease the money supply Contract economy to fight inflation
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Keynesianism}
+Tax cut will increase demand for goods, then the producers may increase prices, then there will be possible inflation.
+
+\subsection{Inflation causes}
+Inflation can be caused by four possible factors:
+\begin{itemize}
+    \item Increase in the money supply
+    \item Decrease in the money demand
+    \item Decrease in the aggregate supply of goods and services (Cost-Push Inflation: rapid increases in raw materials prices or wage increases drive up production cost)
+    \item Increase in the aggregate demand of goods and services (Demand-Pull inflation)
+\end{itemize}
+
+
+\subsection{Stagflation}
+Stagflation is the simultaneous high inflation and high unemployment caused by fiscal stimulus.
+\subsubsection{The Keynesian Dilemma}
+\begin{itemize}
+    \item If expansionary policy were used to stimulate the economy to reduce unemployment, it would exacerbate inflation (The chain of basic ideas behind this belief follows: as more people work the national output increases, causing wages to increase, causing consumers to have more money and to spend more, resulting in consumers demanding more goods and services, finally causing the prices of goods and services to increase. )
+    \item If contractionary policy were used to fight inflation, it would increase unemployment
+\end{itemize}
+
+\subsubsection{Monetarism (Friedman's monetarist school)}
+The problems of both inflation and recession are both due to the rate of growth of the money supply.
+\begin{itemize}
+    \item Inflation happens when the governement prints too much money
+    \item Recession happens when it prints too little money
+    \item Stagflation is the inevitable result of activist fiscal and monetary policies
+    \item Activist Keynesians try to push the economy beyond its so-called "natural rate of unemployment", which is also called "lowest sustainable unemployment rate (LSUR)". LSUR is the lowest level of unemployment that can be attained without upward pressure on inflation (usually, reduce unemployment rate will cause inflation)
+    \item Monetarists believe that the only way to wring inflation and inflationary expectations out of the economy is to push the actual unemployment rate rise above the LSUR.
+\end{itemize}
+
+\subsection{The supply side economics}
+Tax cut will enable workers to keep more of what they earn; then, individuals work harder and increase their productivity; then there will be an increased output and employment; then the supply curve will be shifted, thus reducing the inflation.
+
+
+\subsection{Classical economics vs. Keynesian economics}
+The Classical vs. Keynesian controversy:
+\begin{enumerate}
+    \item Primarily a dispute over how an economy adjusts during a recession and finds its way back to full employment
+    \item The classical view: in the event of unemployment, prices, wages, and interest rates would fall; this would increase consumption, production, and investment and quickly retrun the economy back to its full employment equilibrium. Unemployment is a natural part of the business cycle and is self-correcting. The did not agree that cyclical unempolyment could be caused by a shortage of aggreate demand
+    \item The Keynesian view: When an economy sinks into a recession, people's income fall; they spend and save less while businesses invest and produce less; this drives the economy further into recession rather than back to full employment. 
+    \item The Classical economists support government does not intervene the market. The Keynesian economists support that government increase expenditures.   
+\end{enumerate}
+
+\subsubsection{Two pillars of classical Economics}
+\begin{enumerate}
+    \item Say's Law: Supply creates its own demand 
+    \begin{itemize}
+        \item When people work to produce goods and services, they earn income for doing so
+        \item Say's Law states the total income must equal the value of the goods and services
+        \item If the workers spend this income, it must be enough to pay for the goods and services they produce
+        \item Therefore, supply creates its own demand, i.e., aggregate demand must equal aggregate supply.
+        \item \textbf{critique with the law:} if income earners do not spend all their income. 
+        \item Aggregate Demand = consumption + investment
+    \end{itemize}
+    \item The Quantity theory of money: $PQ=MV$
+\end{enumerate}
+
+\subsection{The Great Depression}
+
+\chapter{Advanced Microeconomics Theory}
+\section{Consumer theory}
+\subsection{Consumption set}
+Let $x\in R^n_+$ be a vector containing different quantities of each of the $n$ goods, and call $x$ a \textbf{consumption bundle} or \textbf{consumption plan}. We can think of the \textbf{consumption set} as the entire nonnegative orthant, $X=\R^n_+$
+\subsection{Consumer's preferences}
+\begin{definition}
+(Preference relation) A binary relation $\succeq$ on the consumption set $X$ if it satisfies:
+\begin{enumerate}
+    \item Completeness. For all $x_1,x_2\in X$, either $x_1 \succeq x_2$ or $x_2 \succeq x_1$
+    \item Transitivity.
+\end{enumerate}
+\end{definition}
+The consumer's preference relation $\succeq$ is complete, transitive, continuous, strictly monotonic, and strictly convex on $\R^n_+$
+
+\begin{definition}
+(Strict preference relation) The binary relation $\succ$ on $X$ is strict preference relation:
+$$x1 \succ x_2 \Leftrightarrow x_1 \succeq x_2,x_2 \nsucceq x_1$$
+\end{definition}
+
+\begin{definition}
+(Indifference relation) The binary relation $\sim$ on $X$ is indifference relation:
+$$x_1 \sim x_2 \Leftrightarrow x_1 \succeq x_2,x_2 \succeq x_1$$
+\end{definition}
+
+\subsection{Utility function}
+\begin{definition}
+A real-valued function $u:\R^n_+ \rightarrow \R$ is called a utility function representing the preference relation $\succeq$, if for all $x_1,x_2\in X$, we have $u(x_1) \geq u(x_2) \Leftrightarrow x_1\succeq x_2$
+\end{definition}
+It can be showed that such utility function exists. \cite{jehle2001advanced}
+
+\subsection{Budget set}
+Consider a consumer is endowed with a fixed money income $y\geq 0$. Given the price vector $p\in \R^n_+$ and the consumption bundle vector $x\in \R^n_+$, we can define the \textbf{budget set} as:
+$$B=\{x|x\in  \R^n_+, p\cdot x \leq y\}$$
+
+\subsection{Utility-maximization problem}
+The consumer's problem can be cast as maximizing the utility  function under the budget constraint, which can be written as:\cite{jehle2001advanced}
+$$\max_{x\in \R^n_+} u(x) ~ s.t. ~ p\cdot x \leq y$$
+
+Given $y$ and the price $p$, the solution to the minimizing problem $x^*(y,p)$ is the consumer's individual demand function.
+
+Also note that because $u$ is strictly increasing, then the equality sign in the constraint will always hold. We have  
+$$\max_{x\in \R^n_+} u(x) ~ s.t. ~ p\cdot x = y$$
+\section{Theory of the firm}
+\subsection{Production}
+The most general way to think of the firm is that a firm having a \textbf{production possibility set} $Y\subset \R^m$, where each vector $y\in Y$ is a production plan whose components indicate the amounts of the various inputs and outputs. A common convention is to write $y_i < 0$ if resource $i$ is used up in the production plan, and $y_i >0$ if resource $i$ is produced in the plan.
+
+Often we want to consider firms producing only a single product from many inputs. In this case, we use production function to describe.
+\begin{definition}
+(The production function)The production function $f:\R^n_+ \rightarrow \R_+$, is continuous, strictly increasing and strictly quasiconcave on $\R^n_+$, and $f(0)=0$.\cite{jehle2001advanced}
+\end{definition}
+The production function takes a vector $x\in \R^n_+$ as inputs to the production, $f(x)$ as the output of the production.
+
+Note that usually, different amount of input $x$ can produce the same amount of output $y$. Then these $x$ form a set called $y-$level \textbf{isoquant}
+\begin{definition}
+An isoquant is just a level set of $f$ defined as \cite{jehle2001advanced}
+$$Q(y)=\{x\geq 0,x\in \R^n_+ | f(x) = y\}$$
+\end{definition}
+
+\subsection{Cost}
+The cost function, defined for all input prices $w \gg 0$ and all output levels $y\in f(\R^n_+)$ is the minimum-value function,
+$$c(w,y) = \min_{x\in \R^n_+} w\cdot x ~ s.t. ~ f(x) \geq y$$
+Because $f$ is strictly increasing, the equality sign in the constraint always holds, we have
+$$c(w,y) = \min_{x\in \R^n_+} w\cdot x ~ s.t. ~ f(x) = y$$
+
+The solution to the minimization problem is $x^*(w,y)$, gives the \textbf{input demand} when given the input price and amount of output of the good.
+\subsection{Profit maximization}
+Under the cost minimization, the profit maximization can be formulated as
+$$\max_{x\in \R^n_+} pf(x)-w\cdot x$$
+The first order condition requires that 
+$$p\nabla f = w$$
+which says the marginal revenue product of input equals the cost the input. \cite{jehle2001advanced}
+
+The optimal output $y^*(p,w) = f(x^*) $ is firm's output supply function.
+
+\section{Equilibrium}
+\subsection{Fundamental theorems of welfare economics}
+\begin{definition}
+Welfare economics is a branch of economics that focuses on the optimal allocation of resources and goods and how this affects social welfare. Welfare economics analyzes the total good or welfare that is achieve at a current state as well as how it is distributed.
+\end{definition}
+
+\subsection{Partial Equilibrium}
+\subsubsection{Market demand}
+The demand side of a market is made up of all potential buyers of the good, each with their own preferences, consumption set, and income. We let $\mathcal{I}=\{1,2,...,I\}$ index the set of individual buyers and $q^i(p,\bm{p},y^i)$ be the $i$ nonnegative demand for good $q$ as a function of its own price $p$, income, $y^i$, and prices, $\bm{p}$ for all other goods. Market demand for $q$ is simply the sum:\cite{jehle2001advanced}
+$$q^d(p)=\sum_{i\in \mathcal{I}}q^i(p,\bm{p},y^i)$$
+
+
+\subsubsection{Short-run market supply}
+The supply side of the market is made up of all potential sellers of $q$. Let $\mathcal{J}=\{1,2,...,J\}$ index the firms. The short-run market supply is the sum of individual firm short-run supply function $q^j(p,\bm{w})$:
+$$q^s(p)=\sum_{j\in \mathcal{J}} q^j(p,\bm{w})$$
+
+
+
+\subsection{General equilibrium}
+\subsubsection{partial equilibrium vs. general equilibrium}
+\begin{itemize}
+    \item A market for a particular commodity is in partial equilibrium if, at the current prices of all commodities, the quantity of the commodity demanded by potential buyers equals the quantity supplied by potential sellers.
+    \item An economy is in general equilibrium if every market in the economy is in partial equilibrium. Here all the market include all markets for all commodities (apples, automobiles, etc.) and for all resources (labor and economic capital) and for all financial assets, including stocks, bonds, and money.
+\end{itemize}
+
+
+\chapter{Consumption-Based Asset Pricing}
+\section{Overview\cite{cochrane2009asset}}
+Given an investor's utility function, which is function of his money at hand, maximize the utility determines how many the investor will invest money and get the expected return of the investment in future. The first order optimality condition requires that today's marginal loss in utility due to investment should equal to the future's expected marginal gain. By looking at how the investor divided to consume today and invest future, we can get the investor's view on the price of the asset. The investor's view on the price should equal to the market price of the asset; because if not, the investor invest buy more or less to affect the market price until the prices are equal. \\
+TODO: This is my own understanding, i am also quite confused about it is the investor utility function and the market price determines how much to consume or it is the investor utility function and his consumption decision determines the market price?
+\subsection{Utility function}
+\chapter{Portfolio Theory}
+\section{The Markowitz Portfolio Optimization Model}
+\begin{definition}
+\textbf{Efficient frontier} is the maximum return at given risk. 
+\end{definition}
+
+\begin{definition}
+\textbf{Capital market line} is the efficient frontier when a risk free asset exists. 
+\end{definition}
+
+\begin{definition}
+A \textbf{portfolio} is a vector $x\in \R^d$, with the constraint $\sum_i x_i = 1$. 
+\end{definition}
+
+
+
+\subsection{Efficient frontier without risk free asset}
+Suppose in our universe, there are $n$ stocks. We are further given $n$ estimated return $E(r_i)$, and the covariance matrix $Cov(r_i,r_j)$. For a portfolio characterized by $x^T r$, where $x$ is the portfolio vector $w\in \mathbb{R}^n$ and $r$ is the random variable vector $r\in \mathbb{R}^n$, the expected total return and the variance are given as
+$$E(x^Tr)=x^TE(r)=\sum_{i=1}^n x_iE(r_i)$$
+$$Var(x^Tr) = w Cov(i,j) x^T$$
+With these formula, we can solve some optimization problem such as maximum return with minimum variance under the constraint of $\sum_i^nw_i=1$. For any given $\sigma^2$, we can maximize our profit via:
+\begin{align*}
+    \max_{x} x^T r \\
+    \text{s.t.} ~ Var(x^T r) \leq \sigma^2 \\
+    \sum_i^n x_i=1
+\end{align*}
+
+Note:
+\begin{itemize}
+    \item The efficient frontier plot in $(\sigma_x,\mu_x)$ is a half bullet shape. 
+    \item Because the covariance matrix is usually positive definite, then any portfolio will have an intrinsic risk/volatility that cannot be diversified away. This \textbf{intrinsic risk} is the tip of the bullet shape. 
+    \item Any efficient investor will choose a point on the efficient frontier based on their risk preference. 
+\end{itemize}
+
+
+\subsection{Efficient frontier with risk free asset}
+When there is a risk free asset, the efficient frontier calculated using above framework to lead to a \textbf{linear efficient frontier} that intercept at $r_f$ and tangent to the bullet shape. Because every efficient will choose a point on the efficient frontier based on their risk preference. We have:
+
+\begin{definition}
+Let $C_i, i=1,2,...,d$, denote the market capitalization of the $d$ assets. Then the \textbf{market portfolio} $x \in \R^d$ is defined as:
+$$x_i = \frac{C_i}{\sum_{i}C_i}$$
+\end{definition}
+
+\begin{theorem}
+If all investors in the market are mean-variance optimizers. Then all of them will invest in the market portfolio, which is also Sharpe optimal portfolio.
+\end{theorem}
+Proof: suppose there are $N$ investors, each with wealth $w^i$, and investing in the same portfolio $s \in \R^d$, which is mean-variance optimal portfolio. Because $\sum_{i}^N w^i s_j = C_j$, then $s_j = \frac{C_j}{\sum_{j=1}^d C_j}$
+
+
+\begin{definition}
+The \textbf{Sharpe ratio} of a portfolio is the ratio of expected excess return over the volatility. The \textbf{optimal Sharpe portfolio} is a portfolio that maximizes the Sharpe ratio. The optimal Sharpe ratio can be expressed as
+$$s^* = \arg\min_{x} (\mu_x - r_f)/\sigma_x$$
+\end{definition}
+
+
+\section{Capital Asset Pricing Model}
+From the Markowtiz Portfolio optimization model, we can obtain an efficient portfolio $M$. Suppose every rational investor is holding this efficient portfolio $M$, then $M$ is essentially the combination of all stocks weighted by its market capitalization, in other words, $M$ is the market.  The capital asset pricing model is linking the risk premium of the stock $i$ to the market risk premium as $$E(r_i) = r_f + \beta (E(r_M) - r_f)$$
+where $\beta$ is $cov(R_i,R_m)/\sigma^2_m$. This CAPM models says that if the investor wants to earn profit more than $r_f$, then he has to bear extra risk.
+
+\subsection{Assumptions of CAPM}
+\begin{itemize}
+    \item All investors have identical information about the return and volatility 
+    \item All investors are mean-variance  optimizers
+    \item The markets are in equilibrim, i.e., $\alpha = 0$ for any asset.
+\end{itemize}
+
+
+\subsection{The Single-Factor/Index Model}
+One drawback of the Markkowitz model is the number of parameters needed to be estimated is a large number. One approximate method is to decompose the return of stock $i$, a random variable, as $$r_i = E(r_i) + \beta_i m + e_i$$
+where $m$, a random variable, is the macroeconomic factor measures the unanticipated macro surprises, and it has $E(m) = 0$ and $\sigma_m$; $e_i$ measures the firm-specific surprise, and it has $E(e_i)=0,\sigma(e_i)$, and $e_i,e_j$ independent to each other; $\beta_i$ characterize the sensitivity of $i$ firm to the macro economy. 
+Then the covariance between stocks are $$cov(r_i,r_j)=\beta_i\beta_j \sigma^2_m$$
+The variance for stock $i$ is $$\sigma^2_i = \beta_i^2 \sigma_m + \sigma^2(e_i)$$
+
+When we use the market index to approximate the market index, we can re-formulate the return of the stock $i$ as:
+$$R_i = \alpha_i + \beta R_M + e_i$$
+where $R_i = r_i - r_f, R_M=r_M - r_f$. Note that here $\alpha$ is not $E(R_i)$, but is the risk premium when the market premium is zero (in the case of $\beta_i = 0$ via hedging)
+The variance of the stock via the Single-Index model is: $\sigma^2_i = \beta_i^2 \sigma^2_M + \sigma^2(e_i)$
+
+\textbf{Note that CAPM implies that $\alpha_i = 0$.}
+
+\subsection{Decomposition of risk}
+
+\subsection{How to take advantage of deviation}
+Two methods:
+\begin{enumerate}
+    \item CAPM predicts that $\alpha = 0$ for any asset. If $\alpha > 0$ for an asset, long; otherwise short.  
+    \item If Sharpe ratio greater than market line's Sharpe ratio, long it; otherwise short it. This is because Sharpe ratio characterizes the reward for taking risk. 
+\end{enumerate}
+
+\subsection{CAPM as a pricing tool}
+Suppose the payoff from an investment in 1yr is $X$. Let $P$ be a price, then the return is $r_X = \frac{X}{P}-1$. The beta of $X$ is given by 
+$$\beta_X = \frac{Cov(r_X,r_m)}{\sigma_m^2} = \frac{1}{P}\frac{Cov(X,r_m}{\sigma_m^2}$$
+Suppose CAPM holds, then
+$$E[X]/P - 1 = E[r_X - r_f] = \beta (\mu_m - r_f)$$
+then
+$$P = \frac{E[X]}{1+r_f} -\frac{Cov(X,r_m)}{(1+r_f)\sigma_m^2}(\mu_m - r_f) $$
+
+notes:
+\begin{itemize}
+    \item If $X$ is the market portfolio, then $P=(1+r_f)$
+\end{itemize}
+
+\marginnote{ Here has some problem}
+\section{Multi-Index Model}
+We model the return for stock $i$ is given by:
+$$r_i = E(r_i) + b_{i,1}f_1 + b_{i,2}f_2 + ... + b_{i,k}f_k + e_i$$
+where the $f_i$s are common factors that affect most securitie, such as economic growth, interest rates, and inflation. We will require that for each factor $E(f_i) = 0, E(e_i) = 0, cov(f_i,f_j) = 0, cov(e_i,e_j) = 0 (i \neq j)$
+
+In matrix form, we have
+$$r = \alpha + Bf$$
+where $r,\alpha,f \in \mathbb{R}^n, B\in \mathbb{R}^{n\times n}$
+
+\section{The Fundamental Law of Trading}
+Assume that the return of a portfolio can be modeled as
+$$r_p(t) = \beta_p r_m(t) + \alpha_p(t) $$where $\beta_p r_m(t)$ will contain market risk, and $\alpha_p(t)$ will be the firm specific residual risk. 
+We further defined \textbf{information ratio (IR)} as: 
+$$IR = \frac{mean(\alpha_p(t))}{stddev(\alpha_p(t))}$$
+\textbf{information coefficients}, characterizing the correlation of forecast to actual return.
+\textbf{Breadth(BR)}, as number of opportunities to execute trading strategy. 
+The \textbf{Fundamental Law} is given as:
+$$IR = IC \sqrt{BR}$$
+
+$IR$ is measure of performance, $IC$ measures the skills of the managers, $BR$ is a measure of opportunities.
+
+
+\chapter{Derivative pricing}
+\section{Expectation vs. arbitrage pricing \cite{baxter1996financial}}
+\subsection{Expectation pricing}
+\begin{itemize}
+    \item Consider selling a coin toss bet that the head will enable the buyer to earn \$1, how much should the price be? If the buyer buy multiple bets on one time, the expectation value of \$0.5 will be a good fair price due to the Law of Large Number. However, if just buying few bets, the expectation value will not be useful because nothing can be said on the outcome. 
+    \item The bet can be sold with a positive price because it can generate value with non-negative probability. 
+\end{itemize}
+\subsection{Arbitrage pricing}
+\begin{itemize}
+    \item Consider the seller of the contract, obliged to deliver the stock at time $T$. They could borrow $S_0$ now, buy the stock, wait till the contract expires. Then you pay to the loaner $S_0 \exp(rT)$, where $r$ is the interest rate. How should the contract be priced? 
+    \item The contract can be sold with a positive price because it can bring a stock at time $T$ to the owner of the contract; and the stock, even though its price is a random variable, has non-negative probability of being positive price. 
+    \item The price of contract should be $S_0 \exp(rT)$, because the contract can simply be replicated/produced using the above borrow-lend scheme with cost of $S_0 \exp(rT)$. This is the lowest cost everyone can get; and thus this is the market price in the competitive market. 
+    \item Arbitrage pricing has implicitly assumed the contract replication process can be made using external resources freely(i.e., borrowing) and the contract market is perfectly competitive, i.e., if sold at a higher price, no one buy it; if sold at a lower price, you certainly lose money since this price is lowest cost. If the above assumption not satisfied, the pricing is not necessarily accurate.  
+\item When pricing using expectation, the price is only fair in the probabilistic sense, then therefore contains risk. 
+    
+\end{itemize}
+
+\subsection{Expectation vs arbitrage pricing}
+\begin{itemize}
+    \item When there is an arbitrage price, any other price is too dangerous to quote.
+    \item Expectation pricing will be useful arbitrage pricing is difficult to get. For example, the price of stock is priced based on expectation. 
+    \item If the arbitrage price is higher than the expectation price, then the good is over-priced in the statistical sense(i.e., multiple same experiments can be repeated).
+\end{itemize}
+
+\section{Discrete process pricing}
+\subsection{Binomial branch model}
+Consider the price of a derivative $f$ as a function of a stock price $S$. Its price function $f$ is known one period later (i.e. at the expiration): $f(s_{up}), f(s_{down})$. How should we price it now?
+\begin{itemize}
+    \item Suppose we use $\phi$ amount of stock and $\ $ amount of cash bond to replicate the derivative. We are equalities for for each possible result of the stock:
+    
+    
+\end{itemize}
+
+\subsubsection{Conditional expectation}
+
+\paragraph{Law of iterated expectations\cite{duffie2010dynamic}}
+Given a sample space $\Omega$, we can define \textbf{tribe} $\mathcal{F}$, or $\sigma-$field, on $\Omega$ as a collection of subsets of $\Omega$ that includes the empty set $\emptyset$ and satisfies the following two conditions:
+\begin{itemize}
+    \item if $B$ is in $\mathcal{F}$, then its complements $\{\omega \in \Omega:\omega \not\in B\}$ is also in $\mathcal{F}$
+    \item if $A$ and $B$ are in $\mathcal{F}$, their union $A\cup B$ is in $\mathcal{F}$.
+\end{itemize}
+If $\mathcal{H},\mathcal{G}$ are both tribes on $\Omega$, and $\mathcal{G}\subset \mathcal{H}$ (in some sense $\mathcal{G}$ has less information), then for random variable $X$, we have $$E[E[X|\mathcal{H}]|\mathcal{G}]=E[X|\mathcal{G}]$$
+
+\subsubsection{Linearity properties}
+
+\subsubsection{Martingale}
+
+
+Here are some important understanding of Martingale:
+\begin{itemize}
+    \item The interpretation of Martingale is that the best estimate on the new random experiment outcome based on previous experiments is the latest random experiment outcome.\cite{shreve2012stochastic1}
+    \item A martingale has no tendency to rise or fall since since the average of its next period value is always its value at the current time.\cite{shreve2004stochastic1}
+    \item In probability theory, a martingale is a model of a fair game where knowledge of past events never helps predict the mean of the future winnings.\cite{wiki:martingale}
+    \item A geometric Brownian motion $\mu = -\sigma^2/2$ is a martingale.
+\end{itemize}
+  
+\paragraph{super-martingale \& sub-martingale}
+\begin{itemize}
+    \item sub-martingale: $M_n <= E[M_{n+1}|M_n,...M_1], n=0,1,...,N-1$;
+    The process has a tendency to increase.
+        \item super-martingale: $M_n >= E[M_{n+1}|M_n,...M_1], n=0,1,...,N-1$;
+    The process has a tendency to decrease.
+\end{itemize}
+
+\part{No arbitrage pricing}
+\chapter{Classical Arbitrage theory}
+
+\section{Arbitrage Theorem}
+\begin{itemize}
+    \item Given a payoff matrix $D\in \R^{N\times K}$, where $N$ is the total number of securities,$K$ is the total number of states of the world. 
+    \item Given a portfolio vector $\theta \in \R^N$
+    \item Given a price vector $S\in \R^N$
+\end{itemize}
+\begin{definition}
+$\theta$ is an arbitrage portfolio is either
+\begin{enumerate}
+    \item $S^T\theta \leq 0$ and $D^T\theta >0, D^T\theta \in \R^K$
+    \item $S^T\theta < 0$ and $D^T\theta \geq 0$
+\end{enumerate}
+\end{definition}
+
+According to this, the portfolio $\theta$ guarantees some positive return in all states (i.e. given a convex combination of each component in $D^T\theta$), yet it costs nothing to purchase. Or it guarantees a non-negative return whiling have negative cost.\cite{hirsa2013introduction}
+\begin{theorem}
+If there are no arbitrage opportunities, then there exists a $\phi > 0$, such that $S=D\phi$
+\end{theorem}
+\marginnote{TODO: how to prove this, how this help us price assets}
+
+A simple application of the Arbitrage condition
+Given 
+$D = \begin{pmatrix} 1+r&1+r\\ s_{up} &s_{down} \end{pmatrix}$ and $S = (1,s)^T$. Using above theorem, we have $S=D\phi$, or
+$$0 = ((1+r)-s_{up}/s)\phi_1 + ((1+r)-s_{down}/s)\phi_2$$
+We requires $\phi_1,\phi_2>0$, then $s_{down}/s < 1+r < s_{up}/s$
+
+\subsection{Informal no-arbitrage theorem}
+Consider the following contract
+\begin{itemize}
+    \item pay price at time $t = 0$
+    \item receive $c_k$ at time $t=k,k+1,...,T$
+\end{itemize}
+The no-arbitrage condition bounds the price $p$ for the contract:
+\begin{itemize}
+    \item Weak No-Arbitrage: $c_k \geq 0 \forall k \Rightarrow p \geq 0$
+    \item Strong No-Arbitrage: $c_k \geq 0 \forall k$, and $c_l >0$ for some $l$, $\Rightarrow p > 0$.
+\end{itemize}
+
+\section{Implicit assumptions of no-arbitrage condition}
+Implicit assumptions underlying the no-arbitrage condition:
+\begin{itemize}
+    \item Markets are liquid: sufficient number of buyers and sellers
+    \item Price information is available to all buyers and sellers
+    \item Competitions in supply and demand will correct any deviation from no-arbitrage prices. 
+    \item same borrow interest rate and lending rate
+\end{itemize}
+
+\section{The Law of One Price}
+\begin{theorem}
+In an \textbf{arbitrage-free} market, consider the values at time $t$ of two portfolio $V_X,V_Y$ (they are random variables parametrized by time $t'>t$): if they are the 'same' random variable at a future time $\tau > t$, in the sense that, they have the equivalent mapping from the random sample space to price, then they must have the same value at time $t$. If one portfolio at a future time $\tau > t$ is more valuable(or less) regardless of the random outcomes, then one portfolio is more valuable (or less).\cite{stefanica2008primer} 
+\end{theorem}
+The simplest proof is that: a portfolio is a good that can generate cash flow, therefore it has value and price. (The portfolio is a good can bring payoff under different state of the world). In a competitive market, same goods must have the same price otherwise there will be arbitrage opportunities.  
+
+\begin{corollary}
+If the value of a portfolio is equal to 0 regardless of the random outcomes in future $\tau > t$, then the value of the portfolio is 0 at time $t$.
+\end{corollary}
+
+The law of one price will give two ways of pricing a portfolio: portfolio replication and construction riskless portfolio. 
+
+Note that these two method can be converted mutually. Suppose we can replicate a state claim using some portfolio, which has value $V_0$. Then we can short this portfolio at $V_0$, and use it to buy the state claim at $p$. At time $T$, we return the state claim. In the process, we are guaranteed/deterministically to get zero at $T$. Therefore, our initial cash flow must be $0=V_0 - p$.
+
+
+
+\subsection{Linear pricing theorem}
+\begin{theorem}
+In a \textbf{arbitrage-free} market, if the price of one deterministic cash flow $c_A$ is $p_A$, the price of another cash flow $c_B$ is $p_B$. Then any other cash flow that pays $c=c_A + c_B$ must be $p=p_A+p_B$.
+\end{theorem}
+The theorem is proved using arbitrage argument. If $p > p_A + p_B$, then short $c$ and buy $c_A,c_B$; otherwise long $c$.
+
+\begin{theorem}
+Consider a set of Arrow securities that produce a unit payoff in each market scenario. If we can price each Arrow securities, then for any other securities that with different payoff vector, its price will be the linear combination of these Arrow securities' prices.  
+\end{theorem}
+Proof: Because the payoff vector is in vector space; that is, a payoff vector can be decomposed as linear combination of Arrow securities payoff vectors. 
+
+
+\subsection{The valuation of riskless portfolio}
+\begin{corollary}
+If the value $V(T)$ of a portfolio at time $T$ in the future is independent of the random outcome, then $$V(t) = e^{-r(T-t)}V(T),t<T$$
+where $r$ is the constant risk free rate. 
+\end{corollary}
+
+The implication of this corollary is that if we can construct a riskless portfolio, i.e., a portfolio without randomness and get a deterministic payoff $V_T$ at future time $T$. Then its initial price $V_0$ must satisfy $V_0=exp(-rT)V_T$. It has to be such, otherwise people can just long(short) infinite amount of this portfolio by borrowing/lending money at interest rate $r$.
+
+
+\subsection{Options Put-call parity \& bounds}
+\begin{theorem}
+European put-call parity at time $t$ for non-dividend paying stocks:
+$$p(t,K,T) + S_t = c(t,K,T)+K d(t,T)$$
+where $d(t,T) < 1$ is the discount factor from $t$ to $T$.
+\end{theorem}
+Proof: 
+\begin{itemize}
+    \item Cash flow at time $T$: $\max\{S_T-K,0\}-\max\{K-S_T,0\}-S_T+K = 0$
+    \item Cash flow at time $t$:
+    $-c(t,K,T) + p(t,K,T) + S_t -Kd(t,T) = 0$
+\end{itemize}
+No-arbitrage requires once one holds, the other must hold.
+
+\subsubsection{Bounds}
+\begin{itemize}
+    \item Price of American option $\geq$ European option:
+    $$c_A(t,K,T) \geq c_E(t,K,T),p_A(t,K,T) \geq p_E(t,K,T)$$
+    \item Lower bounds on European options 
+    $$c_E(t,K,T) = \max(S_t+p_E(t,K,T)-Kd(t,K),0)\geq \max(S_t+-Kd(t,T),0)$$ and
+    $$p_E(t,K,T) = \max(-S_t+c_E(t,K,T)+Kd(t,K),0)\geq \max(Kd(t,T)-S_t,0)$$
+    where we use the put-call parity and the facts that $c_E,p_E \geq 0.$
+    \item Upper bounds on European options:
+    $$c_E(T,K,T) = \max(S_T-K,0) \leq S_T \Rightarrow c_E(t,K,T) \leq S_t $$
+    $$p_E(T,K,T) = \max(K-S_T,0) \leq K \Rightarrow p_E(t,K,T) \leq Kd(t,T) $$
+    \item Never early exercise an American call on a non-dividend paying stock:
+    $$c_A(t,K,T) \geq c_E(t,K,T) \geq \max(S_t-Kd(t,T),0) > \max(S_t-K,0)$$
+    therefore the price of an American call is always strictly greater than its exercise value $\max(S_t-K,0)$
+\end{itemize}
+
+\begin{lemma}
+An American call has the same price as European call if they have the same strike price and expiration date. 
+\end{lemma}
+
+\subsection{Forward pricing}
+When the two parties enter a contract that on a future date $T$, an asset is trade at the forward price $F$. Suppose the two parties will not pay extra money to enter the contract, how should be the forward price $F$ set such that the two parties are willing to enter?
+
+The fair price should satisfy:
+$$F+\sum_{i=1}^N D_i e^{(r-q)(T-t)} = S_0 e^{(r-q)T}$$
+where $r$ is the risk free rate, $D_i$ is the dividend guaranteed to pay at $t_i$, $S_0$ is the spot price of the underlying asset, $q$ is the cost-of-carry.
+
+The method to replicate a forward for the underlying asset is to buy the asset, and wait to contract expired date. The full cash flow generated within the process discounted to the payment date is the price of forward price. The idea is the asset hold till the expired date is the replication. \cite{wiki:forwardprice}
+
+\subsubsection{Forward/future pricing in multi-period binomial model}
+Note that the forward/future price should be set such that entering the contract will cost 0. In the neutral pricing, we have
+$$0 = E^Q_n[(F_n-F_{n+1})/R] \Rightarrow F_n = E^Q_n[F_{n+1}]$$
+where $Q$ is the risk-neutral measure, $R$ is the risk free rate, $(F_n-F_{n+1})/R$ is the discounted payoff in $n+1$. 
+
+\subsection{Black-Scholes equation}
+See \cite{wilmott1995mathematics}
+
+
+
+
+
+\section{Arbitrage theory}
+See \cite{bjork2004arbitrage}
+
+\subsection{Setup of single period market}
+Consider a market in which K assets, labelled $A_1, A_2, . . . , A_K$, are freely traded. \textbf{Assume that one of these, say $A_1$, is riskless}, that is, its value at time t = 1 does
+not depend on the market scenario. The share price of asset $A_j$ at time $t = 0$ is $S_0^j$; without
+loss of generality, we may assume that $S_0^1 = 1$. Uncertainty about the behavior of the market
+is encapsulated in a finite set $\Omega$ of $N$ possible market scenarios, labelled $\omega_1, \omega_2,..., \omega_N$. There is an $N$ by $K$ matrix with entries $S_1^j(\omega_i)$ such that, in scenario $i$, the
+price of a share of $A_j$ at time t = 1 is $S_1^j(\omega_i)$.\cite{Lalley2001mathematical}
+
+
+\subsection{Equilibrium measure}
+\begin{definition}
+A probability distribution $\pi_i$ on the sample space $\Omega$ of $N$ possible market scenarios is said to be an equilibrium measure(or risk-neural measure) if, for every, asset $A$, the price of $A$ at time $t=0$ is the discounted expectation, under $\pi$, of the price at time $t=1$, that is \cite{Lalley2001mathematical}
+$$S_0^j = e^{-r}\sum_{i=1}^K \pi_i S_1^j (\omega_i),\forall j=1,2,...,K$$
+\end{definition}
+
+Note:
+\begin{enumerate}
+    \item the equilibrium measure might not exist; even exists, it might not be unique. 
+    \item However, if it exists and unique, then we can use it to price assets. 
+\end{enumerate}
+
+\subsubsection{Constraints on equilibrium measure}
+Consider a real probability $P$, the equilibrium measure $\pi$, should satisfy $P(\omega) > 0 \Rightarrow \pi(\omega) > 0, \forall \omega \in \Omega$. Since in our payoff matrix model, every outcome has positive real probability, then we are implicitly requiring that $\pi(\omega_i) > 0$. 
+
+\subsection{Fundamental theorem of arbitrage pricing}
+\begin{theorem}
+There exists an equilibrium measure if and only if arbitrage does not exist. \cite{Lalley2001mathematical}
+\end{theorem}
+proof: 
+\begin{enumerate}
+    \item The forward: Consider a portfolio given by a vector $\theta \in \R^K$. When there is an equilibrium measure, we have
+    $$V_0 = \theta \cdot S_0 = \sum_{j=1}^K \theta_j e^{-r}\sum_{i=1}^j \pi_i S_1^j (\omega_i) = e^{-r}\sum_{i=1}^K \pi_i V_1 (\omega_i)$$
+    If $V_1 > 0$ in \textbf{every} market scenario, $V_0 >0$, therefore $\theta$ cannot be an arbitrage.
+    \item The backward: consider a hull formed by $N$ vertices $S_1(\omega_i)$, with each vertices represent the payoff vector at market scenario $\omega_i$. The equilibrium measure dot these vertices represents a convex combination of the payoff. Therefore, when $S_0$ is inside the interior of the convex hull, there will always exist a convex combination,i.e., the equilibrium measure with all positive terms. Now we prove that if there is no arbitrage, the $S_0$ must lie inside the interior of the convex hull: if not, based on hyperplane seperation axiom, there will exist a $\theta \in \R^K, b\in \R$, such that $\theta \cdot S_0 + b< 0$, whereas $\theta \cdot S' + b> 0, \forall S' \in Conv(S_1(\omega_1,),S_1(\omega_2,)..)$. Note that the constant $b$ here does not matter, because it says we spend less that than $-b$, but we are guaranteed to get money greater than $-b$.
+\end{enumerate}
+
+Note that in practice, we will assume there is no arbitrage in the market, the direct consequence of this assumption is there exists an equilibrium measure, even though uniqueness cannot be guaranteed. 
+
+\subsection{Replication, hedging \& completeness}
+
+\begin{definition}
+(Replication) Consider a market where there are freely trade asset $B$, and $A_1,A_2,...,A_K$. The payoff matrix at time 1 of $A$s are given by $S_1$. A portfolio $\theta \in \R^K$ in the asset $A$s is a replicating portfolio of asset $B$ if
+$$S_1^B(\omega_i) = \theta \cdot S_1(\omega_i),\forall i=1,2....,N$$
+\end{definition}
+
+\begin{theorem}
+(\textbf{Replication pricing}) Suppose that $\theta$ is a replicating portfolio of $B$ in the asset $A$s. If the market if \textbf{arbitrage-free}, then $t=0$ the price of $B$ is given as
+$$S_0^B = \theta \cdot S_1$$
+\end{theorem}
+Proof: Suppose $S_0^B < \theta \cdot S_1$, then we can construct a portfolio $\theta' = [1, -\theta^T]^T$. This portfolio has value less than 0, yet it will produce zero value at time 1. Similarly, we can prove $>$.
+
+
+\textbf{Note:}
+\begin{itemize}
+    \item In general, only economically connected assets can be replicated. Different stocks, for example, can not be replicated because they have different nature. 
+In practice, only a derivative can be replicated by other stock assets.
+\item \textbf{hedging via replicating} For every asset $B$ sold, buy replicating portfolio $\theta$ such that at time 1 net gain = net loss = 0. 
+\end{itemize}
+
+\begin{definition}
+(market completeness) A complete market is one that has a unique equilibrium measure. Otherwise, the market is incomplete.
+\end{definition}
+
+\begin{theorem}
+Let $M$ be an arbitrage free market with a riskless asset. The market is complete If and only if for every derivative security there is a replicating portfolio in the assets $A$s, then the market is complete.
+\end{theorem}
+
+Note: 
+\begin{itemize}
+    \item We always assume arbitrage free, with which, the existence of positive equilibrium measure is guaranteed. 
+    \item Every derivative can be characterized by a payoff vector $v\in \R^N$. All derivatives form a vector space. A market is complete if the asset $A$s span the vector space. Then every derivative payoff vector can be expressed as a linear combination of payoff vectors of $A$s,i.e., it can be replicated. 
+    \item An equilibrium measure (note that we require $\pi(\omega_i) > 0$)is essentially a special replicating portfolio vector such that there is guaranteed return $e^r$ in any market scenario. Because the asset $A$s span the vector space, for this special derivative, there will exist a unique solution. Therefore, the arbitrage free condition guarantees the existence of positive solutions; then the completeness guarantees its uniqueness.
+\end{itemize}
+
+
+
+
+\marginnote{Here i have some issue: can we treate equilibrium measure as a special portfolio that has guaranteed return, however, this special portfolio can only be replicated by only buying the riskless asset. What is contraint on the equilibrium measure (should every term greater than 0?)}
+
+
+\subsection{Replication pricing vs. equilibrium measure pricing}
+
+
+\begin{theorem}
+(equilibrium measure pricing) In a arbitrage-free and complete market, suppose we can obtain an unique equilibrium measure from a set of assets, then for any other asset $V$, whose payoff is completely determined by the outcomes of the same sample space, then 
+$$V_0 e^r= \sum_{i=1}^N V_1(\omega_i) = E_{\pi}[V_1]$$
+\end{theorem}
+
+Note:
+
+In a complete no-arbitrage market, where the equilibrium measure exists uniquely. The equilibrium measure can be solved by $$S_0 e^r = S_1 \pi,S_1\in \R^{K\times N}, \pi \in \R^N$$
+Note that in solving for the equilibrium measure, we are essentially solving for the replication portfolio vector for a special derivative that will produce $S_0 e^r$ as the payoff vector. 
+
+The equilibrium measure and general replication portfolio for derivatives can be connected by the replication of Debi arrow security. Suppose the replication vector for the $N$ arrow securities are $\theta^*_1,\theta^*_2,...$, then the equilibrium measure is $\pi = e^r (\sum_{i=1}^N \theta^*_i)$; for any other derivatives with payoff $S'\in \R^N$, we have $\theta^* = [\theta^*_1,\theta^*_2,...] S'$.
+
+\subsection{Understanding arbitrage pricing}
+\begin{itemize}
+    \item Given a future payoff vector, the current price is related to the future payoff via certain functional form. The \textbf{linear pricing} theorem requires the functional form has to be linear, otherwise there will be arbitrage. 
+    \item In terms of linear functional forms, the existence of the coefficients are guaranteed by \textbf{Fundamental theorem}. The \textbf{uniqueness} is further guaranteed by \textbf{market completeness}
+    \item The name risk-neutral probability is maybe a misleading name; it is essentially the linear coefficients!
+\end{itemize}
+
+  
+
+
+
+\subsubsection{Stock pricing vs. derivative pricing}
+\begin{itemize}
+    \item \textbf{stock pricing} generally cannot use these arbitrage argument; instead, we should use the general utility maximization, supply-demand curve, expectation theory etc to price stock. Another point to understand is when consider multiple stocks, the sample space is the product of each sample space; therefore, one stock cannot be replicated by other stocks.
+    \item \textbf{derivative pricing} can use arbitrage argument is because when consider derivatives with the stocks, the probability space remain the same. Then we are assuming the price of the stock is already given and it is fair; based on these given fair price, we can construct no-arbitrage price for each Arrow securities; then based on linear pricing theorem, we can price any derivatives by linearly decomposing their payoff vector. 
+    \item The price of Arrow security has to be linear; and this linear coefficient is constrained by the stock price given due to no arbitrage argument(i.e. same payoff vector should have the same price). 
+\end{itemize}
+
+\subsubsection{Examples of market completeness vs. incompleteness}
+Consider there are two asset in the market, a bond $B$ and a stock $S$. If there are three market scenarios in $T=1$, then we cannot price a derivative given the price of $B$ and $S$ at time 0.
+
+\subsubsection{How to calculate positive equilibrium measure}
+
+\section{Trading strategies in Binomial model}
+\subsection{Trading strategies}
+\begin{definition}
+A trading strategies is a $k$-dimensional stochastic process $\theta_t$ representing the portfolio held:
+\begin{itemize}
+    \item immediately after trading at time $t-1$ so it is know at time $t-1$.
+    \item and immediately before trading at time $t$.
+\end{itemize}
+\end{definition}
+Consider the real axis as the time axis, trading operation only happen at these discrete time points $t_1,t_2,...$. $\theta_n$ represents the portfolio held in the interval $(t_{n-1},t_{n})$. $\theta_t$ is generally un-defined at time $t$ since the trading is right occurring.
+
+\subsection{Value process \& self-financing}
+\begin{definition}
+The value process $V_t(\theta)$, associated with a trading strategy $\theta_t$, with the price vector $S_t$, is defined by:
+$$V_t = \theta_t \cdot S_t$$
+\end{definition}
+
+\begin{definition}
+A self-financing trading strategy is a trading strategy $\theta_t$ where its changes in $V_t(\theta)$ are due to entirely trading gains or loss rather than the injection or withdrawl of cash funds. In particular, a self-financing strategy satisfies:
+$$V_t = \theta_{t+1}\cdot S_t = \theta_t \cdot S_t, t=1,2,...$$
+\end{definition}
+The final equation essentially says the value of the portfolio will not change to changes in portfolio at any time point.(because when we sell some asset, we have to buy some other asset worth the same, as required by the definition of self-financing) 
+
+\begin{lemma}
+(Value change in self-financing strategy) A self-financing trading strategy:
+$$V_{t+1}-V_t = \theta_{t+1}\cdot \delta \theta$$
+\end{lemma}
+
+
+
+\section{Pricing futures \& forwards}
+\begin{itemize}
+    \item A future contract calls for delivery of a good at a specified delivery data, for an agreed-upon price, called the \textbf{futures price $F_0$} , to be paid at contract maturity.
+    \item The trader taking the \textbf{long position} commits to buy the commodity at the contract maturity. The trader taking the \textbf{short position} commits to deliver the commodity at the maturity. 
+    \item At the time the contract is entered into, no money changes hands. 
+    \item At maturity, we have: profit-to-long = $S_T - F_0 = F_T - F_0$, profit-to-short=$F_0 - S_T = F_0 - F_T$
+    \item At the time of entering contract, the future price is $F_0$; at maturity, the future price $F_T = S_T$; More generally, at any time $t$ that we enter the contract, we have a future price $F_t$, which is a random variable. 
+    \item Suppose at $t=0$, we enter the contract, then up to maturity, every date we can check $F_t$ to enable settlement/clearing. 
+    \item For fixed risk-free rate, we have $F_t = S_t exp(r(T-t))$, which suggest that $F_t$ is stochastic. 
+\end{itemize} 
+
+
+
+\chapter{Martingale Method}
+\section{Fair games}
+\subsection{A game with known outcomes \& probability}
+\begin{definition}
+A zero-sum game is a fair game if and only if the expected winnings of each player is zero. \cite{dineen2013probability}
+\end{definition}
+Consider the following examples:
+\begin{enumerate}
+    \item Consider two player bet $\$5$ on a toss of a coin: John wins when a head comes up, Mark wins when the tail comes up. The winner will take $\$10$. The game is \textbf{fair} if and only if the probability of head appears is 0.5. 
+    \item Consider John bet $\$3$, and Mark $\$7$,on a toss of a coin: John wins when a head comes up, Mark wins when the tail comes up. The winner will take $\$10$. The game is \textbf{fair} if and only if the probability of head appears is 0.3.
+    \item Consider lottery. John spend a $\$5$ to buy to ticket which enable him to win huge money with tiny odds. As the lottery reward increases, the game might bias towards the buyers. If the price of the ticket remains fixed, the buyers will increase since it is unfair game now.
+\end{enumerate}
+
+\begin{lemma}
+Probabilities and rewards are both used to calculate the expected return. In a zero-sum game if one of these is given, then other can be chosen to the make the game fair. \cite{dineen2013probability}
+\end{lemma}
+
+\subsubsection{Fair price vs. risk-neutral participants}
+Risk-neutral participants are the participants who cares only about the expectation price, rather than the possible large variations associated with the bet. On the fair price, risk-neutral participants will not care with which side he is taking.  
+
+However, if the participants are concerned with the variance of the return, then the participants will not accept this fair price. 
+
+Another way to characterize risk-neutral participants is that their utility function is $U(x)=x$, in which we will have $E[U(x)]=U(E[x])$.
+
+\subsubsection{Why people play a fair game}
+If a game is fair, in which the expected return 0, why people want to attend game? (Most)People attend the game not because they want to make riskless money, but because they want to make money under acceptable risk.
+
+The game must be fair such that players want to play. If the game is biasing towards one side, then the other side will not want to play since it is unfair.
+
+
+\subsection{A game with known outcome yet unknown probability}
+
+
+\section{Martingale measure for two state spot market}
+Consider a discrete stock price process consists of $S_0$ and $S_T$. We denote the discounted stock price as:
+$$S^*_0 = S_0,S^*_T = S_T/(1+r)$$
+In the martingale measure, we have $$S_0^*=\E_{\PP^*}[S^*_T]$$
+In the case that the sample space of $S^T$ has only two state, we have \cite{musiela2006martingale}
+$$S_0 = (1+r)^{-1}(\PP^*(S^u)S^u+\PP^*(S^d)S^d)$$
+Solve it and we have
+$$\PP^*(S^u)=\frac{(1+r)S_0-S^d}{S^u-S^d}$$
+$$\PP^*(S^d)=\frac{S^u-(1+r)S_0}{S^u-S^d}$$
+
+Now a call option on this stock on the expiry date $T$ will have
+$$C_0(1+r) = \E_{\PP^*}(C^T)$$
+
+\subsection{Risk-neural measure, statistical measure, personal probability measure}
+
+Note that the martingale measure is the measure under which buying or selling a stock is fair game, i.e., $S_0(1+r)=\E_{\PP^*}[S_T]$, with its expected value of the stock price same as deposit it in the bank and get the interest. Because the price of call option is determined (deterministically determined) by the underlying stock price,i.e. $C_T = f(S^T)$, the fair game condition for call option requires that $$C_0(1+r) = \E_{\PP^*}(C^T)$$ 
+
+Given the possible outcome $S^d$ and $S^u$ for $S^T$, the price $S_0$ must be a fair price (otherwise, there will be arbitrage opportunities to buy or sell to change the supply-demand such that the price will move to fair price). From $S^d$,$S^u$ and $S_0$, we can deduce a risk-neutral probability measure, which reflects the consensus on the the possible movement of the stock price. 
+
+Note that each investor has his own probability measure on the possible movement of the stock. If he expects higher probability of the stock to take $S^u$, he will buy, otherwise he will sell. The martingale/risk-neutral measure is just the aggregated personal probability measure. 
+
+In terms of a fair betting game, each investor is betting against the rest of investors instead of any specific investor (since this is perfectly competitive market).
+
+
+Another condition for the martingale measure is that all investors should agree the possible outcomes $S^d$ and $S^u$. 
+
+
+
+
+\subsection{St. Petersburg paradox}
+See \cite{wiki:Petersburgparadox}
+
+
+\section{Martingales}
+
+\begin{definition}
+Let $(\Omega, \cF, P)$ be a probability space. A martingale sequence of length $n$ is a chain $X_1, X_2,..., X_n$ of random variables and corresponding sub $\sigma$-fields $\cF_1, \cF_2, ... , \cF_n $ that satisfy the following relations
+\begin{enumerate}
+    \item Each Xi is an integrable random variable which is measurable with respect to the corresponding Fi.
+    \item The sequence $\cF_i$ form a filtration
+    \item $E[X_{i+1}|\cF_i]=X_i$
+\end{enumerate}
+\end{definition}
+
+\subsection{Implications for a martingale}
+\begin{itemize}
+    \item A martingale is a zero-drift stochastic process. A stochastic process $\theta(t)$ follows a martingale if it has the form
+    $$d\theta = \sigma dW$$
+    where the variable $\sigma$ can itself be stochastic or as a function of $\theta$ and other stochastic processes, $W$ is the Wiener process.
+    \item The expected value at any future time is equal to its value today:
+    $$E[\theta(T)] = \theta_0$$
+    note that $E[]$ here does not condition on any thing. 
+\end{itemize}
+
+
+\subsection{Discounted price process as martingale}
+\begin{theorem}
+If the market admits no arbitrage, and has a riskless asset with rate return $r>0$, then under any equilibrium measure $Q$, the discounted price process of any traded asset $\{e^{-rt}S_t\}$ is a martingale relative to the natural filtration. 
+\end{theorem}
+Proof:
+
+
+\subsection{Predictable process}
+\begin{definition}
+Let $\{Y_t\}$ be a sequence random variables adapted to filtration $\{\cF_t\}$. The sequence $Y_t$ is said to be predictable if for every $t>1$, the random variable $Y_t$ is $\cF_{t-1}$ measurable.
+\end{definition}
+
+\subsection{Martingale transform}
+\begin{definition}
+Let $\{X_t\}$ be a martingale, let $\{Y_t\}$ be a predictable sequence. The martingale transform $\{(Y\cdot X)_t\}$ is the 
+$$(Y\cdot X)_t = X_0 + \sum_{j=0}^{t-1} Y_j (X_{t+1}-X_t)$$
+\end{definition}
+
+\begin{lemma}
+Assume that $\{X_t\}$ is an adapted sequence and $\{Y_t\}$ a predictable sequence, both relative to a filtration $\{\cF_t\}$. If $\{X_t\}$ is a martingale, then the martingale transform $\{(Y_t\cdot X_t)\}$ is a martingale with respect to $\{\cF_t\}$
+\end{lemma}
+Proof:
+
+\subsection{Value process as martingale}
+\begin{theorem}
+Assume that $M$ is a multi-period market containing a riskless asset, and assume that there is a risk-neutral probability measure $Q$ for $M$. Then for every self-financing portfolio $\theta$, the value process $V_t$ is a martingale under $Q$.
+\end{theorem}
+Proof:
+
+
+\subsection{Relations of no-arbitrage and equivalent martingale measure}
+\begin{itemize}
+    \item If there exist an equivalent martingale measure $Q$ such that $V_0 = E^Q[V^T]$, then there is no arbitrage. Because $Q$ and $P$(the real world probability) are equivalent, then if $E^P[V^T]>0 \Leftrightarrow E^Q[V^T] \Leftrightarrow V_0 >0 $
+    \item If there is no-arbitrage, then TODO
+\end{itemize}
+
+\chapter{Interest rate models}
+\section{Basics}
+\subsection{Price of Zeros-Coupon Bonds}
+We denote $P(t,T)$ as the price at time $t$ of a zero-coupon bond that matures at time $T$(pays \$1).
+
+Some practical constraints and issues: 
+\begin{enumerate}
+    \item $t \leq T$
+    \item $t$ is not necessarily the time the bond is issuing. 
+    \item $P(t,t)=1, P(t,T) \leq 1 \forall T\geq t$, if interest rate is always non-negative. 
+\end{enumerate}
+
+The bond price is a function of two parameters $t$ and $T$.
+
+\subsection{Forward Rates \& instantaneous forward rate}
+The forward rate time $t$ (continuously compounding) which applies between times $T$ and $S (t\leq T < S)$ is defined as
+$$F(t,T,S) = \frac{1}{S-T}\log \frac{P(t,T)}{P(t,S)}$$
+
+The forward rate is used in a forward contract. Under such contract we agree at time $t$ that we will invest 1 at time $T$ in return for $e^{(S-T)F(t,T,S)}$ at time $S$. In other words, we are fixing the interest rate between $S,T$ in advance at time $t$.
+
+The forward rate is a function of three parameters. 
+
+
+The instantaneous forward rate at time $t$ is
+$$f(t,T) = \lim_{S\rightarrow T} F(t,T,S) = -\frac{\partial}{\partial T} \log P(t,T)$$
+We also have
+$$P(t,T) = \exp(-\int_t^T f(t,u)du$$
+
+
+\subsection{Spot rate( yield to maturity) \& short rate}
+The spot rate at time $t$ for maturity at $T$ is defined as the yield to maturity of the ZCB:
+$$R(t,T)=-\frac{\log P(t,T)}{T-t}$$ or
+$$P(t,T) = exp(-R(t,T)(T-t))$$
+
+Spot rate $R(t,T)$ is also paramterized by two parameters $t$ and $T$.
+
+
+The short rate is defined as
+$$r(t) = \lim_{T\rightarrow t} R(t,T) = R(t,t) = f(t,t)$$
+
+Short rate is what we usually refer to as risk-free rate. 
+
+\subsection{Relations between short rate, price, \& forward rate}
+For a given $t$, each of the curves $P(t,T),f(t,T),R(t,T)$ have the following relationships:
+$$P(t,T) = \exp(-R(t,T)(T-t))=\exp(-\int_t^T f(t,s)ds)$$
+
+\subsection{General theories of interest rates}
+see \cite{cairns2004interest}
+\subsubsection{Expectation theory}
+\subsubsection{Liquidity preference theory}
+\subsubsection{Market Segmentation theory}
+\subsubsection{Arbitrage-free pricing theory}
+
+
+
+\subsection{Fundamental theorem of asset pricing}
+Suppose the risk-free rate $r(t)$ is stochastic. Randomness in $r(t)$ is underpinned by the probability space $(\Omega,\cF,P)$. Let the cash account be $$B(t) = B(0) \exp(\int_0^t r(s)ds)$$
+Note that $dB(t) = r(t)B(t)dt$ has no Brownian term $dW(t)$. Even though $r(t)$ is stochastic, $B(t)$ is still risk-free, since $r(t) > 0$.
+
+\begin{theorem}
+\begin{itemize}
+    \item Bond prices evolves in a way that there is no arbitrage if and only if there exists a measure $Q$, equivalent to $P$, under which, for each $T$, the discounted price process $P(t,T)/B(t)$ is a martingale for all $t: 0 < t< T$.
+    \item If the above holds,i.e., the measure $Q$ exists, then the market is complete if and only if $Q$ is the unique measure under which the $P(t,T)/B(t)$ are martingales
+\end{itemize}
+\end{theorem}
+
+
+
+
+\subsubsection{Market completeness}
+
+\subsubsection{Examples of arbitrage in bond markets}
+Parallel Yield curve shift arbitrage.\cite{cairns2004interest}
+
+\subsection{Pricing a bond}
+\begin{corollary}
+$$P(t,T) = E_Q[\exp(-\int_t^T r(s)ds)|\cF_t]$$
+specifically, 
+$$P(0,T) = E_Q[1/B(T)]$$
+where $\cF_t$ is the filtration generated by the price histories up to time $t$. 
+\end{corollary}
+Proof: Use the fundamental theorem, $$P(t,T)/B(t) =E_Q[P(T,T)/B(T)ds)|\cF_t] \Rightarrow  P(t,T)E_Q[P(T,T)B(t)/B(T)|\cF_t ]=P(0,T)$$
+where we use the fact that $P(T,T)=1,B(t)$ is deterministic under $\cF_t$.
+
+\subsection{Pricing an interest rate dependent derivative}
+\begin{corollary}
+If $X$ is some $\cF_T$-measurable derivative payoff at $T$, and if $V(t)$ is the price, then $V(t)/B(t)$ is a martingale under $Q$. Hence
+$$V(t) = E_Q[\exp(-\int_t^T r(u)du) X | \cF_t]$$
+in particular,
+$$V(0)/B_0 = E_Q[X/B(T)]$$
+\end{corollary}
+
+
+\subsection{Put-call parity in bond pricing}
+\cite{cairns2004interest}
+
+
+
+\subsection{The change-of-numeraire technique}
+\begin{definition}
+A numeraire is any positive non-dividend-paying asset.
+\end{definition}
+Here we require the numeraire to have positive value in any world states. 
+
+
+\chapter{Numerical methods}
+\section{Calibrating a Bionomial Model}
+Given the continuous geometric Brownian motion, we can convert them into equivalent binomial model parameters:
+\begin{itemize}
+    \item $R_n = \exp(r T/n)$, where $n$ is the number of periods in binomial model
+    \item $R_n-c_n = \exp((r-c)T/n) \approx 1+rT/n-cT/n$
+    \item $u_n = \exp(\sigma \sqrt{T/n})$
+    \item $d_n = 1/u_n$
+    \item the risk-neutral probability is calculated as $q=\frac{\exp((r-c)T/n)-d}{u-d}$
+\end{itemize}
+
+The binomial model prics converge to Black-scholes prices as $n\rightarrow \infty$
+\printbibliography[title={Whole bibliography}]
+\end{document}
+
+
